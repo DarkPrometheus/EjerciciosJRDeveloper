@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.plHeader = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label6 = new System.Windows.Forms.Label();
@@ -43,11 +44,18 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dtpFechaNacimiento = new System.Windows.Forms.DateTimePicker();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblMessage = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtChar = new System.Windows.Forms.TextBox();
+            this.btnConsultar = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.plTabla = new System.Windows.Forms.Panel();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.plHeader.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -160,10 +168,10 @@
             // 
             this.btnGuardar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnGuardar.Font = new System.Drawing.Font("Palatino Linotype", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnGuardar.Location = new System.Drawing.Point(294, 81);
+            this.btnGuardar.Location = new System.Drawing.Point(215, 79);
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(131, 38);
+            this.btnGuardar.Size = new System.Drawing.Size(186, 38);
             this.btnGuardar.TabIndex = 1;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
@@ -175,7 +183,7 @@
             this.lblNombre.AutoSize = true;
             this.lblNombre.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblNombre.ForeColor = System.Drawing.Color.White;
-            this.lblNombre.Location = new System.Drawing.Point(75, 10);
+            this.lblNombre.Location = new System.Drawing.Point(32, 11);
             this.lblNombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(87, 26);
@@ -187,7 +195,7 @@
             this.txtNombre.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNombre.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtNombre.Location = new System.Drawing.Point(74, 38);
+            this.txtNombre.Location = new System.Drawing.Point(31, 39);
             this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(150, 24);
@@ -198,7 +206,7 @@
             this.txtApellido.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtApellido.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtApellido.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtApellido.Location = new System.Drawing.Point(284, 38);
+            this.txtApellido.Location = new System.Drawing.Point(32, 93);
             this.txtApellido.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(150, 24);
@@ -210,7 +218,7 @@
             this.lblApellido.AutoSize = true;
             this.lblApellido.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblApellido.ForeColor = System.Drawing.Color.White;
-            this.lblApellido.Location = new System.Drawing.Point(284, 10);
+            this.lblApellido.Location = new System.Drawing.Point(32, 65);
             this.lblApellido.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblApellido.Name = "lblApellido";
             this.lblApellido.Size = new System.Drawing.Size(88, 26);
@@ -223,7 +231,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(467, 10);
+            this.label1.Location = new System.Drawing.Point(215, 11);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(186, 26);
@@ -234,13 +242,17 @@
             // 
             this.dtpFechaNacimiento.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dtpFechaNacimiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dtpFechaNacimiento.Location = new System.Drawing.Point(467, 40);
+            this.dtpFechaNacimiento.Location = new System.Drawing.Point(215, 41);
             this.dtpFechaNacimiento.Name = "dtpFechaNacimiento";
             this.dtpFechaNacimiento.Size = new System.Drawing.Size(190, 22);
             this.dtpFechaNacimiento.TabIndex = 8;
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.tableLayoutPanel2);
+            this.panel3.Controls.Add(this.label7);
+            this.panel3.Controls.Add(this.txtChar);
+            this.panel3.Controls.Add(this.btnConsultar);
             this.panel3.Controls.Add(this.lblApellido);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.btnGuardar);
@@ -251,18 +263,82 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(734, 133);
+            this.panel3.Size = new System.Drawing.Size(734, 159);
             this.panel3.TabIndex = 10;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.lblMessage, 0, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(215, 122);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(186, 22);
+            this.tableLayoutPanel2.TabIndex = 13;
+            // 
+            // lblMessage
+            // 
+            this.lblMessage.AutoSize = true;
+            this.lblMessage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblMessage.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblMessage.ForeColor = System.Drawing.Color.Firebrick;
+            this.lblMessage.Location = new System.Drawing.Point(4, 0);
+            this.lblMessage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblMessage.Name = "lblMessage";
+            this.lblMessage.Size = new System.Drawing.Size(178, 22);
+            this.lblMessage.TabIndex = 12;
+            this.lblMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(500, 9);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(182, 26);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "Consultar por inicial:";
+            // 
+            // txtChar
+            // 
+            this.txtChar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtChar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtChar.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtChar.Location = new System.Drawing.Point(514, 39);
+            this.txtChar.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.txtChar.MaxLength = 1;
+            this.txtChar.Name = "txtChar";
+            this.txtChar.Size = new System.Drawing.Size(150, 24);
+            this.txtChar.TabIndex = 11;
+            this.txtChar.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // btnConsultar
+            // 
+            this.btnConsultar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnConsultar.Font = new System.Drawing.Font("Palatino Linotype", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnConsultar.Location = new System.Drawing.Point(523, 79);
+            this.btnConsultar.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.btnConsultar.Name = "btnConsultar";
+            this.btnConsultar.Size = new System.Drawing.Size(131, 38);
+            this.btnConsultar.TabIndex = 9;
+            this.btnConsultar.Text = "Consultar";
+            this.btnConsultar.UseVisualStyleBackColor = true;
+            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
             // 
             // panel4
             // 
             this.panel4.Controls.Add(this.plTabla);
             this.panel4.Controls.Add(this.plHeader);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(0, 133);
+            this.panel4.Location = new System.Drawing.Point(0, 159);
             this.panel4.Name = "panel4";
             this.panel4.Padding = new System.Windows.Forms.Padding(12);
-            this.panel4.Size = new System.Drawing.Size(734, 237);
+            this.panel4.Size = new System.Drawing.Size(734, 264);
             this.panel4.TabIndex = 11;
             // 
             // plTabla
@@ -274,7 +350,7 @@
             this.plTabla.Location = new System.Drawing.Point(12, 47);
             this.plTabla.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.plTabla.Name = "plTabla";
-            this.plTabla.Size = new System.Drawing.Size(710, 178);
+            this.plTabla.Size = new System.Drawing.Size(710, 205);
             this.plTabla.TabIndex = 1;
             // 
             // Form1
@@ -282,7 +358,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(734, 370);
+            this.ClientSize = new System.Drawing.Size(734, 423);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
@@ -297,6 +373,8 @@
             this.tableLayoutPanel1.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -320,5 +398,11 @@
         private Label label3;
         private Label label2;
         private Panel plTabla;
+        private Label label7;
+        private TextBox txtChar;
+        private Button btnConsultar;
+        private Label lblMessage;
+        private TableLayoutPanel tableLayoutPanel2;
+        private ToolTip toolTip1;
     }
 }

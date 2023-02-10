@@ -4,17 +4,21 @@ namespace EjerciciosJRDeveloper
 {
     public partial class Form1 : Form
     {
-        private Stack<PersonaModel> personas = new Stack<PersonaModel>();
+        private Stack<PersonaModel> personas;
         public Form1()
         {
             InitializeComponent();
-            InsertarDatosBase();
-            InsertData();
+            SQLCommands.CheckDataBaseExist();
+            personas = SQLCommands.GetRecords();
 
+            FillTable();
+
+            toolTip1.SetToolTip(btnConsultar, "Deje el campo vacio para cargar todos los registros");
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            lblMessage.Text = "";
             if (txtNombre.Text != "" && txtApellido.Text != "")
             {
                 plTabla.Controls.Clear();
@@ -27,22 +31,16 @@ namespace EjerciciosJRDeveloper
                 persona.FechaRegistro = DateTime.Now;
                 personas.Push(persona);
 
-                InsertData();
+                SQLCommands.InsertIntoDataBase(persona);
+
+                FillTable();
             }
+            else
+                lblMessage.Text = "Faltan campos por llenar";
         }
 
-        void InsertData()
+        void AddRow(PersonaModel persona)
         {
-            foreach (PersonaModel persona in personas)
-            {
-                SQLCommands.InsertIntoDataBase(persona.Nombre, persona.Apellido, persona.FechaNacimiento, persona.FechaRegistro);
-                AddRow(persona.IdRegistro, persona.Nombre, persona.Apellido, persona.FechaNacimiento, persona.FechaRegistro);
-            }
-        }
-
-        void AddRow(int idRegistro, string nombre, string apellido, long fechaNacimiento, DateTime fechaRegistro)
-        {
-            Color color = Color.FromArgb(25, 25, 25);
             TableLayoutPanel panel = new TableLayoutPanel()
             {
                 BackColor = color,
@@ -61,7 +59,7 @@ namespace EjerciciosJRDeveloper
             Label lblId = new Label()
             {
                 Name = "Id",
-                Text = idRegistro.ToString(),
+                Text = persona.IdRegistro.ToString(),
                 BackColor = Color.FromArgb(20, 20, 20),
                 Dock = DockStyle.Fill,
                 ForeColor = Color.White,
@@ -72,122 +70,50 @@ namespace EjerciciosJRDeveloper
             };
             panel.Controls.Add(lblId, 0, 0);
 
-            Label lblNombre = new Label()
-            {
-                Name = "Nombre",
-                Text = nombre,
-                BackColor = color,
-                Dock = DockStyle.Fill,
-                ForeColor = Color.White,
-                Font = new Font("Microsoft Sans Serif", 9, FontStyle.Regular),
-                TextAlign = ContentAlignment.MiddleCenter,
-                Margin = new Padding(0),
-                Padding = new Padding(0),
-            };
-            panel.Controls.Add(lblNombre, 1, 0);
-
-            Label lblApellido = new Label()
-            {
-                Name = "Apellido",
-                Text = apellido,
-                BackColor = color,
-                Dock = DockStyle.Fill,
-                ForeColor = Color.White,
-                Font = new Font("Microsoft Sans Serif", 9, FontStyle.Regular),
-                TextAlign = ContentAlignment.MiddleCenter,
-                Margin = new Padding(0),
-                Padding = new Padding(0),
-            };
-            panel.Controls.Add(lblApellido, 2, 0);
-
-            Label lblFechaNacimiento = new Label()
-            {
-                Name = "FechaNacimiento",
-                Text = fechaNacimiento.ToString(),
-                BackColor = color,
-                Dock = DockStyle.Fill,
-                ForeColor = Color.White,
-                Font = new Font("Microsoft Sans Serif", 9, FontStyle.Regular),
-                TextAlign = ContentAlignment.MiddleCenter,
-                Margin = new Padding(0),
-                Padding = new Padding(0),
-            };
-            panel.Controls.Add(lblFechaNacimiento, 3, 0);
-
-            Label lblFechaRegistro = new Label()
-            {
-                Name = "FechaRegistro",
-                Text = fechaRegistro.ToString(),
-                BackColor = color,
-                Dock = DockStyle.Fill,
-                ForeColor = Color.White,
-                Font = new Font("Microsoft Sans Serif", 9, FontStyle.Regular),
-                TextAlign = ContentAlignment.MiddleCenter,
-                Margin = new Padding(0),
-                Padding = new Padding(0),
-            };
-            panel.Controls.Add(lblFechaRegistro, 4, 0);
-
-            idRegistro++;
+            panel.Controls.Add(CreateLabel("Nombre", persona.Nombre), 1, 0);
+            panel.Controls.Add(CreateLabel("Apellido", persona.Apellido), 2, 0);
+            panel.Controls.Add(CreateLabel("FechaNacimiento", persona.FechaNacimiento.ToString()), 3, 0);
+            panel.Controls.Add(CreateLabel("FechaRegistro", persona.FechaRegistro.ToString()), 4, 0);
         }
 
-        void InsertarDatosBase()
+        private void FillTable()
         {
-            //1
-            //Pedro
-            //Mola
-            //19791011
-            //FechaYHoraActual
+            foreach (PersonaModel personaModel in personas)
+                AddRow(personaModel);
+        }
 
-            //2
-            //Pablo
-            //Videgaray
-            //19750105
-            //FechaYHoraActual
+        Color color = Color.FromArgb(25, 25, 25);
+        Label CreateLabel(string name, string text)
+        {
+            Label lbl = new Label()
+            {
+                Name = name,
+                Text = text,
+                BackColor = color,
+                Dock = DockStyle.Fill,
+                ForeColor = Color.White,
+                Font = new Font("Microsoft Sans Serif", 9, FontStyle.Regular),
+                TextAlign = ContentAlignment.MiddleCenter,
+                Margin = new Padding(0),
+                Padding = new Padding(0),
+            };
 
-            //3
-            //Sonia
-            //Lopez
-            //19850306
-            //FechaYHoraActual
+            return lbl;
+        }
 
-            //4
-            //Alex
-            //Perez
-            //19800708
-            //FechaYHoraActual
+        private void btnConsultar_Click(object sender, EventArgs e)
+        {
+            plTabla.Controls.Clear();
+            if (txtChar.Text == "")
+                personas = SQLCommands.GetRecords();
+            else
+            {
+                personas = SQLCommands.GetRecordsLike(char.Parse(txtChar.Text));
 
-            PersonaModel persona = new PersonaModel();
-            persona.IdRegistro = 1;
-            persona.Nombre = "Pedro";
-            persona.Apellido = "Mola";
-            persona.FechaNacimiento = 19791011;
-            persona.FechaRegistro = DateTime.Now;
-            personas.Push(persona);
-
-            persona = new PersonaModel();
-            persona.IdRegistro = 2;
-            persona.Nombre = "Pablo";
-            persona.Apellido = "Videgaray";
-            persona.FechaNacimiento = 19750105;
-            persona.FechaRegistro = DateTime.Now;
-            personas.Push(persona);
-
-            persona = new PersonaModel();
-            persona.IdRegistro = 3;
-            persona.Nombre = "Sonia";
-            persona.Apellido = "Lopez";
-            persona.FechaNacimiento = 19850306;
-            persona.FechaRegistro = DateTime.Now;
-            personas.Push(persona);
-
-            persona = new PersonaModel();
-            persona.IdRegistro = 4;
-            persona.Nombre = "Alex";
-            persona.Apellido = "Perez";
-            persona.FechaNacimiento = 19800708;
-            persona.FechaRegistro = DateTime.Now;
-            personas.Push(persona);
+                if (personas.Count == 0)
+                    MessageBox.Show("Sin registros encontrados para la letra " + txtChar.Text, "Sin resultados");
+            }
+            FillTable();
         }
     }
 }
