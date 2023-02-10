@@ -73,6 +73,8 @@ Y por último, para el campo *FechaRegistroEnSistema*, ya que SQLite [no tiene](
 
 4. **Implementar en el lenguaje y plataforma que domine la ejecución de los scripts de los punto 2 y 3**
 
+[Release](https://github.com/DarkPrometheus/EjerciciosJRDeveloper/releases/tag/V1.0)
+
 <br>
 
 5. **Considerando la información almacenada anteriormente y la implementación anterior , ¿cómo evitarías que se repitieran registros con "Nombre" y "Apellido" iguales?. Explicar a detalle.**
